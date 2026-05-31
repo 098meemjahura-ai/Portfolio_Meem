@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jahura Akter Meem – Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --cream: #FAF8F4;
+    --ink: #1C1C1A;
+    --muted: #6B6860;
+    --accent: #2D5A3D;
+    --accent-light: #E8F0EA;
+    --border: rgba(28,28,26,0.12);
+    --sans: 'DM Sans', sans-serif;
+    --serif: 'Cormorant Garamond', serif;
+  }
+  body { background: var(--cream); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.7; }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* NAV */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,248,244,0.92); backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between; height: 56px;
+  }
+  nav .brand { font-family: var(--serif); font-size: 18px; font-weight: 600; letter-spacing: 0.01em; }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav ul li a { font-size: 13px; font-weight: 400; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; }
+  nav ul li a:hover { color: var(--ink); text-decoration: none; }
+
+  /* SECTIONS */
+  section { padding: 80px 5%; border-bottom: 1px solid var(--border); }
+  section:last-child { border-bottom: none; }
+
+  /* HERO */
+  #hero {
+    min-height: 88vh; display: flex; flex-direction: column; justify-content: center;
+    padding-top: 40px; padding-bottom: 60px;
+    position: relative; overflow: hidden;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; right: -60px; top: -60px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: var(--accent-light);
+    opacity: 0.5;
+  }
+  .hero-tag {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 24px;
+  }
+  #hero h1 {
+    font-family: var(--serif); font-size: clamp(42px, 8vw, 78px); font-weight: 600;
+    line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); margin-bottom: 20px;
+  }
+  #hero h1 span { color: var(--accent); }
+  #hero .subtitle {
+    font-size: 17px; color: var(--muted); max-width: 540px; margin-bottom: 36px; line-height: 1.6;
+  }
+  .cta-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
+  .btn-primary {
+    background: var(--ink); color: var(--cream);
+    padding: 11px 26px; border-radius: 4px; font-size: 14px; font-weight: 500;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent); text-decoration: none; }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--ink);
+    padding: 11px 26px; border-radius: 4px; font-size: 14px; font-weight: 400;
+    transition: background 0.2s;
+  }
+  .btn-outline:hover { background: var(--accent-light); text-decoration: none; }
+
+  /* SECTION HEADINGS */
+  .sec-label {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 8px;
+  }
+  .sec-title {
+    font-family: var(--serif); font-size: clamp(28px, 5vw, 42px); font-weight: 600;
+    line-height: 1.1; color: var(--ink); margin-bottom: 40px;
+  }
+
+  /* VALUE PROP */
+  #value .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; }
+  .val-card {
+    padding: 32px 28px; border-left: 1px solid var(--border); border-top: 1px solid var(--border);
+  }
+  .val-card:nth-child(4n+1) { border-left: none; }
+  @media (max-width: 600px) { .val-card { border-left: none; } }
+  .val-icon { font-size: 22px; color: var(--accent); margin-bottom: 14px; }
+  .val-card h3 { font-size: 15px; font-weight: 500; margin-bottom: 8px; }
+  .val-card p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ABOUT */
+  #about .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  @media (max-width: 680px) { #about .two-col { grid-template-columns: 1fr; } }
+  #about .bio { font-size: 16px; line-height: 1.75; color: var(--ink); }
+  #about .bio p + p { margin-top: 16px; }
+  #about .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .stat-box { padding: 20px; background: white; border: 1px solid var(--border); border-radius: 6px; text-align: center; }
+  .stat-num { font-family: var(--serif); font-size: 36px; font-weight: 600; color: var(--accent); line-height: 1; }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+  /* SKILLS */
+  #skills .skills-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  @media (max-width: 640px) { #skills .skills-layout { grid-template-columns: 1fr; } }
+  .skill-group h3 { font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 14px; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tag {
+    padding: 6px 14px; background: white; border: 1px solid var(--border);
+    border-radius: 20px; font-size: 13px; color: var(--ink);
+  }
+  .tag.highlight { background: var(--accent-light); border-color: var(--accent); color: var(--accent); font-weight: 500; }
+
+  /* EXPERIENCE / RESEARCH */
+  #experience .timeline { max-width: 740px; }
+  .exp-item { padding-left: 28px; border-left: 2px solid var(--border); margin-bottom: 42px; position: relative; }
+  .exp-item::before {
+    content: '';
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--accent); border: 2px solid var(--cream);
+    position: absolute; left: -6px; top: 5px;
+  }
+  .exp-meta { font-size: 12px; color: var(--muted); margin-bottom: 4px; letter-spacing: 0.04em; }
+  .exp-role { font-size: 16px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+  .exp-org { font-size: 14px; color: var(--accent); margin-bottom: 10px; }
+  .exp-body { font-size: 14px; color: var(--muted); line-height: 1.65; }
+  .exp-body ul { padding-left: 16px; margin-top: 6px; }
+  .exp-body li { margin-bottom: 4px; }
+
+  /* PUBLICATIONS */
+  #publications .pub-list { max-width: 740px; }
+  .pub-item { padding: 20px 0; border-top: 1px solid var(--border); }
+  .pub-item:last-child { border-bottom: 1px solid var(--border); }
+  .pub-venue { font-size: 11px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 4px; }
+  .pub-title { font-size: 15px; font-weight: 400; color: var(--ink); line-height: 1.5; }
+  .pub-year { font-size: 12px; color: var(--muted); margin-top: 4px; }
+
+  /* AWARDS */
+  #awards .awards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+  .award-card {
+    background: white; border: 1px solid var(--border); border-radius: 8px;
+    padding: 22px; display: flex; gap: 16px; align-items: flex-start;
+  }
+  .award-icon { font-size: 20px; color: var(--accent); flex-shrink: 0; margin-top: 2px; }
+  .award-title { font-size: 14px; font-weight: 500; color: var(--ink); margin-bottom: 4px; }
+  .award-detail { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+  /* CONTACT */
+  #contact { background: var(--ink); color: var(--cream); border-bottom: none; }
+  #contact .sec-label { color: #7CB88F; }
+  #contact .sec-title { color: var(--cream); margin-bottom: 32px; }
+  .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; max-width: 700px; }
+  .contact-item { display: flex; align-items: center; gap: 12px; color: rgba(250,248,244,0.8); font-size: 14px; }
+  .contact-item i { font-size: 18px; color: #7CB88F; }
+  .contact-note { margin-top: 40px; font-size: 13px; color: rgba(250,248,244,0.5); max-width: 480px; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="brand">Jahura Akter Meem</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag">Open to Opportunities · Sylhet, Bangladesh</div>
+  <h1>Administrative &amp;<br><span>Academic Coordinator</span></h1>
+  <p class="subtitle">Physics researcher, U.S. exchange alumna, and community leader with strong communication, outreach, and organizational skills — ready to drive enrollment and program success at HRDI, DIU.</p>
+  <div class="cta-row">
+    <a href="#contact" class="btn-primary">Get in Touch</a>
+    <a href="#experience" class="btn-outline">See My Work</a>
+  </div>
+</section>
+
+<!-- VALUE PROPOSITION for the job -->
+<section id="value">
+  <div class="grid">
+    <div class="val-card">
+      <div class="val-icon">💬</div>
+      <h3>Strong Communicator</h3>
+      <p>IELTS 7.5. Presented research at AGU &amp; AMS international conferences. Fluent in English, Bangla.</p>
+    </div>
+    <div class="val-card">
+      <div class="val-icon">🎓</div>
+      <h3>Academic Outreach</h3>
+      <p>Organized school and university visits, seminars, and competitions as Field Secretary at CAM-SUST.</p>
+    </div>
+    <div class="val-card">
+      <div class="val-icon">📋</div>
+      <h3>Event & Program Coordination</h3>
+      <p>Led event planning, team coordination, and monthly programs as Organizing Secretary for 2+ years.</p>
+    </div>
+    <div class="val-card">
+      <div class="val-icon">🌐</div>
+      <h3>Global Perspective</h3>
+      <p>U.S. Department of State exchange scholar. Managed editorial workflow for a U.S. university journal.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-label">About Me</div>
+  <div class="two-col">
+    <div class="bio">
+      <p>I am a Physics graduate from Shahjalal University of Science and Technology with a Master's degree and a U.S. exchange semester under a Department of State scholarship. My academic journey has given me strong analytical and research capabilities, while my extensive leadership and community roles have sharpened my communication, organizational, and outreach skills.</p>
+      <p>I am deeply motivated by work that connects people with opportunities — whether through educational outreach, program coordination, or student engagement. I thrive in target-driven environments and bring both structure and creativity to administrative challenges.</p>
+      <p>I am drawn to the Assistant Administrative Officer role at HRDI, DIU because it sits at the intersection of academic administration, student recruitment, and community impact — areas where I have hands-on experience and genuine passion.</p>
+    </div>
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-num">4</div>
+        <div class="stat-label">International Conference Presentations</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">7.5</div>
+        <div class="stat-label">IELTS Score (Listening 8.5)</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">205+</div>
+        <div class="stat-label">Families Supported Through Community Initiatives</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Leadership Roles in Student Organizations</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-label">Skills &amp; Competencies</div>
+  <div class="sec-title">Built for Administration &amp; Outreach</div>
+  <div class="skills-layout">
+    <div class="skill-group">
+      <h3>Aligned with This Role</h3>
+      <div class="skill-tags">
+        <span class="tag highlight">Communication &amp; Interpersonal</span>
+        <span class="tag highlight">Student Outreach &amp; Marketing</span>
+        <span class="tag highlight">Event Coordination</span>
+        <span class="tag highlight">Database &amp; Record Management</span>
+        <span class="tag highlight">MS Office (Excel, Word)</span>
+        <span class="tag highlight">Problem Solving</span>
+        <span class="tag highlight">Target-Driven Work</span>
+        <span class="tag highlight">Social Media Communication</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Additional Capabilities</h3>
+      <div class="skill-tags">
+        <span class="tag">Python &amp; Data Analysis</span>
+        <span class="tag">Research &amp; Report Writing</span>
+        <span class="tag">Climate Data Tools (ERA5)</span>
+        <span class="tag">HTML</span>
+        <span class="tag">Data Visualization</span>
+        <span class="tag">Academic Writing</span>
+        <span class="tag">LaTeX / Document Typesetting</span>
+        <span class="tag">Teamwork &amp; Leadership</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-label">Experience &amp; Leadership</div>
+  <div class="sec-title">What I Have Done</div>
+  <div class="timeline">
+
+    <div class="exp-item">
+      <div class="exp-meta">2016 – Present</div>
+      <div class="exp-role">Co-founder &amp; Joint Organizing Secretary</div>
+      <div class="exp-org">Swapnadorsho, Sylhet</div>
+      <div class="exp-body">
+        Led community outreach and organizational activities over nearly a decade:
+        <ul>
+          <li>Organized inter-school quiz competitions for 80+ students on current affairs.</li>
+          <li>Coordinated food relief for 205 families and distributed 1,500+ clothing items across 10 areas.</li>
+          <li>Raised 48,000+ BDT for Sunamganj flood victims through fundraising campaigns.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">Apr 2023 – Apr 2024</div>
+      <div class="exp-role">General Editor</div>
+      <div class="exp-org">The Peacock's-Feet Journal, Georgia College &amp; State University, USA</div>
+      <div class="exp-body">Managed the full editorial pipeline of a student-run art and literature journal — overseeing submissions, edits, and final publication under professional deadlines.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">Jun 2020 – Jun 2022</div>
+      <div class="exp-role">Organizing Secretary</div>
+      <div class="exp-org">CAM-SUST (Astronomy Club), Shahjalal University</div>
+      <div class="exp-body">Planned and managed monthly events, club meetings, and organizing weeks — coordinating across departments and ensuring smooth execution for 2+ years.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">Jun 2019 – Jun 2020</div>
+      <div class="exp-role">Field Education Secretary</div>
+      <div class="exp-org">CAM-SUST, Shahjalal University</div>
+      <div class="exp-body">Organized and led school visits, outreach programs, seminars, and competitions to promote science education — directly relevant to the promotional activities required in the HRDI role.</div>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">2024 – 2025</div>
+      <div class="exp-role">Research Assistant &amp; Lead Researcher</div>
+      <div class="exp-org">Shahjalal University of Science and Technology</div>
+      <div class="exp-body">Conducted climate and disaster risk research; produced reports and presented findings at international conferences (AGU, AMS). Demonstrated analytical thinking, reporting, and professional communication.</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="sec-label">Research &amp; Publications</div>
+  <div class="sec-title">International Presentations</div>
+  <div class="pub-list">
+    <div class="pub-item">
+      <div class="pub-venue">AGU Fall Meeting 2025</div>
+      <div class="pub-title">Understanding Coldwave Variability in Bangladesh in Relation to Large-Scale Atmospheric–Oceanic Oscillations</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">AMS Annual Meeting 2025</div>
+      <div class="pub-title">Understanding the Meteorological Conditions Leading to Extreme 24-Hour Rainfall Events Exceeding 300 mm in Bangladesh</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">AGU Fall Meeting 2024</div>
+      <div class="pub-title">Analyzing the Impact of Effective Cyclone Forecast Communication on Bangladesh's Socioeconomic Outcomes</div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-venue">University Physics Competition 2023</div>
+      <div class="pub-title">Dynamics of Banana Effects in Penalty Kicks — Bronze Medal</div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="sec-label">Awards &amp; Recognition</div>
+  <div class="sec-title">Honours &amp; Achievements</div>
+  <div class="awards-grid">
+    <div class="award-card">
+      <div class="award-icon">🇺🇸</div>
+      <div>
+        <div class="award-title">YSALI 2026 Fellow</div>
+        <div class="award-detail">Young South Asian Leadership Initiative, USA Cohort 1 — 14-day leadership workshop in the United States.</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🎓</div>
+      <div>
+        <div class="award-title">Global U-Grad Scholar</div>
+        <div class="award-detail">U.S. Department of State-sponsored exchange semester at Georgia College &amp; State University, Spring 2022.</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🥉</div>
+      <div>
+        <div class="award-title">Bronze Medal</div>
+        <div class="award-detail">University Physics Competition, 2023 — International competition recognizing analytical and scientific problem-solving.</div>
+      </div>
+    </div>
+    <div class="award-card">
+      <div class="award-icon">🌿</div>
+      <div>
+        <div class="award-title">Finalist — Youth Environmental Initiative</div>
+        <div class="award-detail">Selected as a finalist in the 2023 Bangladesh Youth Environmental Initiative.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="sec-label">Contact</div>
+  <div class="sec-title">Let's Connect</div>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <i class="ti ti-mail"></i>
+      <a href="mailto:098meemjahura@gmail.com" style="color:rgba(250,248,244,0.85);">098meemjahura@gmail.com</a>
+    </div>
+    <div class="contact-item">
+      <i class="ti ti-phone"></i>
+      <span>+880 1760 635 949</span>
+    </div>
+    <div class="contact-item">
+      <i class="ti ti-brand-linkedin"></i>
+      <a href="https://www.linkedin.com/in/jahura-akter-meem-753448164" style="color:rgba(250,248,244,0.85);" target="_blank">LinkedIn Profile</a>
+    </div>
+    <div class="contact-item">
+      <i class="ti ti-map-pin"></i>
+      <span>Sylhet, Bangladesh</span>
+    </div>
+  </div>
+  <p class="contact-note">I am actively seeking the Assistant Administrative Officer position at HRDI, Daffodil International University. I welcome conversations about how my background in outreach, coordination, and communication aligns with your team's needs.</p>
+</section>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</body>
+</html>
